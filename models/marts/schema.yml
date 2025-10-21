@@ -7,3 +7,22 @@ models:
         tests:
           - unique      # Teste 1: Garante que cada valor nesta coluna é único
           - not_null    # Teste 2: Garante que não há valores nulos nesta coluna
+          
+# (Conteúdo existente para dim_customers acima)
+
+  - name: fct_orders # <-- NOVA SEÇÃO PARA fct_orders
+    columns:
+      - name: order_id
+        tests:
+          - unique      # Garante que cada ID de pedido é único
+          - not_null    # Garante que não há IDs de pedido nulos
+      - name: customer_id
+        tests:
+          - not_null    # Garante que todo pedido tem um cliente associado
+          - relationships: # Garante que todo customer_id em fct_orders existe em dim_customers
+              to: ref('dim_customers')
+              field: customer_id
+      - name: status
+        tests:
+          - accepted_values: # Garante que o status só pode ser um destes valores
+              values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
