@@ -5,3 +5,4 @@ sources:
     schema: ecommerce_raw # Este é o NOME REAL do dataset no BigQuery onde o Airbyte colocou os dados.
     tables:
       - name: raw_customers # Este é o NOME REAL da tabela no BigQuery criada pelo Airbyte.
+      - name: raw_orders # <-- ADICIONE ESTA LINHA
