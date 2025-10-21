@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: dim_customers  # O nome do modelo SQL (dim_customers.sql) que queremos testar
+    columns:
+      - name: customer_id # A coluna específica que queremos testar
+        tests:
+          - unique      # Teste 1: Garante que cada valor nesta coluna é único
+          - not_null    # Teste 2: Garante que não há valores nulos nesta coluna
